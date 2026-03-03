@@ -165,10 +165,9 @@ export default function Problems() {
                       </Link>
                     </td>
                     <td className="px-4 py-3">
-                      <span className={`text-xs capitalize font-medium ${
-                        p.difficulty === 'easy' ? 'text-green-600' :
-                        p.difficulty === 'medium' ? 'text-yellow-600' : 'text-red-600'
-                      }`}>
+                      <span className={`text-xs capitalize font-medium ${p.difficulty === 'easy' ? 'text-green-600' :
+                          p.difficulty === 'medium' ? 'text-yellow-600' : 'text-red-600'
+                        }`}>
                         {p.difficulty}
                       </span>
                     </td>

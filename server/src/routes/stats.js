@@ -1,7 +1,6 @@
 const router = require('express').Router();
-const { PrismaClient } = require('@prisma/client');
+const prisma = require('../lib/prisma');
 const { calculateStreak } = require('../services/statsService');
-const prisma = new PrismaClient();
 
 // ── Overview stats ───────────────────────────────────────
 router.get('/overview', async (req, res, next) => {

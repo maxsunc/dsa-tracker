@@ -109,10 +109,9 @@ export default function ProblemDetail() {
           <div>
             <div className="flex items-center gap-3 mb-2">
               <span className="text-gray-400 font-mono text-sm">#{problem.leetcodeNumber}</span>
-              <span className={`text-xs capitalize font-medium px-2 py-0.5 rounded-full ${
-                problem.difficulty === 'easy' ? 'bg-green-100 text-green-700' :
-                problem.difficulty === 'medium' ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700'
-              }`}>
+              <span className={`text-xs capitalize font-medium px-2 py-0.5 rounded-full ${problem.difficulty === 'easy' ? 'bg-green-100 text-green-700' :
+                  problem.difficulty === 'medium' ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700'
+                }`}>
                 {problem.difficulty}
               </span>
             </div>
@@ -192,10 +191,9 @@ export default function ProblemDetail() {
                   {userProblem.reviewHistory.map((r) => (
                     <div key={r.id} className="flex items-center gap-4 text-sm py-1">
                       <span className="text-gray-400 w-28">{formatDate(r.reviewedAt)}</span>
-                      <span className={`capitalize font-medium ${
-                        r.rating === 'easy' ? 'text-green-600' :
-                        r.rating === 'medium' ? 'text-yellow-600' : 'text-red-600'
-                      }`}>
+                      <span className={`capitalize font-medium ${r.rating === 'easy' ? 'text-green-600' :
+                          r.rating === 'medium' ? 'text-yellow-600' : 'text-red-600'
+                        }`}>
                         {r.rating}
                       </span>
                       <span className="text-gray-400">→ {r.nextInterval}d interval</span>

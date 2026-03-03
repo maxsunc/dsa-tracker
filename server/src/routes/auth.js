@@ -2,9 +2,8 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const passport = require('../config/passport');
-const { PrismaClient } = require('@prisma/client');
+const prisma = require('../lib/prisma');
 const { registerSchema, loginSchema } = require('../schemas/auth');
-const prisma = new PrismaClient();
 
 const signTokens = (userId) => ({
   accessToken: jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '15m' }),

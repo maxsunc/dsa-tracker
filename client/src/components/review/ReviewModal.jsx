@@ -54,10 +54,9 @@ export default function ReviewModal({ userProblem, onClose, onComplete }) {
         </div>
 
         <div className="flex items-center gap-3 mb-4">
-          <span className={`text-xs px-2 py-1 rounded-full capitalize ${
-            problem.difficulty === 'easy' ? 'bg-green-100 text-green-700' :
-            problem.difficulty === 'medium' ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700'
-          }`}>
+          <span className={`text-xs px-2 py-1 rounded-full capitalize ${problem.difficulty === 'easy' ? 'bg-green-100 text-green-700' :
+              problem.difficulty === 'medium' ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700'
+            }`}>
             {problem.difficulty}
           </span>
           <span className="text-sm text-gray-500">Review #{userProblem.reviewCount + 1}</span>

@@ -18,10 +18,9 @@ export default function DueTodayList({ problems, onReview }) {
               <div className="flex gap-2 mt-1">
                 <span className="text-xs text-gray-500">{up.problem.category}</span>
                 <span className="text-xs text-gray-400">·</span>
-                <span className={`text-xs capitalize ${
-                  up.problem.difficulty === 'easy' ? 'text-green-600' :
-                  up.problem.difficulty === 'medium' ? 'text-yellow-600' : 'text-red-600'
-                }`}>
+                <span className={`text-xs capitalize ${up.problem.difficulty === 'easy' ? 'text-green-600' :
+                    up.problem.difficulty === 'medium' ? 'text-yellow-600' : 'text-red-600'
+                  }`}>
                   {up.problem.difficulty}
                 </span>
                 <span className="text-xs text-gray-400">·</span>

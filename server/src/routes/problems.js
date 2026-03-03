@@ -1,7 +1,6 @@
 const router = require('express').Router();
-const { PrismaClient } = require('@prisma/client');
+const prisma = require('../lib/prisma');
 const { createProblemSchema } = require('../schemas/problem');
-const prisma = new PrismaClient();
 
 // ── List all problems (filterable) ───────────────────────
 router.get('/', async (req, res, next) => {

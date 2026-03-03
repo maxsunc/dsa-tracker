@@ -1,8 +1,7 @@
 const router = require('express').Router();
-const { PrismaClient } = require('@prisma/client');
+const prisma = require('../lib/prisma');
 const { reviewSubmitSchema } = require('../schemas/review');
 const { calculateNextReview } = require('../services/reviewScheduler');
-const prisma = new PrismaClient();
 
 // ── Get today's due + overdue problems ───────────────────
 router.get('/due', async (req, res, next) => {

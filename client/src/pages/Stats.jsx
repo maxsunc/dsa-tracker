@@ -143,11 +143,10 @@ export default function Stats() {
               <div
                 key={day.date}
                 title={`${day.date}: ${day.count} reviews`}
-                className={`w-3 h-3 rounded-sm ${
-                  day.count === 0 ? 'bg-gray-100' :
-                  day.count <= 2 ? 'bg-indigo-200' :
-                  day.count <= 5 ? 'bg-indigo-400' : 'bg-indigo-600'
-                }`}
+                className={`w-3 h-3 rounded-sm ${day.count === 0 ? 'bg-gray-100' :
+                    day.count <= 2 ? 'bg-indigo-200' :
+                      day.count <= 5 ? 'bg-indigo-400' : 'bg-indigo-600'
+                  }`}
               />
             ))}
           </div>
