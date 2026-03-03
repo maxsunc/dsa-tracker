@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String?  @map("password_hash")
+  googleId     String?  @unique @map("google_id")
+  avatarUrl    String?  @map("avatar_url")
+  displayName  String?  @map("display_name")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  userProblems UserProblem[]
+
+  @@map("users")
+}
+
+model Problem {
+  id             Int    @id @default(autoincrement())
+  title          String
+  leetcodeUrl    String @map("leetcode_url")
+  leetcodeNumber Int    @map("leetcode_number")
+  difficulty     String // "easy" | "medium" | "hard"
+  category       String
+  pattern        String
+
+  userProblems UserProblem[]
+
+  @@map("problems")
+}
+
+model UserProblem {
+  id              String    @id @default(uuid())
+  userId          String    @map("user_id")
+  problemId       Int       @map("problem_id")
+  status          String    @default("not_started") // "not_started" | "completed" | "in_review"
+  notes           String?
+  currentInterval Int       @default(0) @map("current_interval")
+  reviewCount     Int       @default(0) @map("review_count")
+  nextReviewDate  DateTime? @map("next_review_date")
+  easeFactor      Float     @default(1.0) @map("ease_factor")
+  completedAt     DateTime? @map("completed_at")
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  problem Problem @relation(fields: [problemId], references: [id])
+  reviews ReviewHistory[]
+
+  @@unique([userId, problemId])
+  @@index([userId, nextReviewDate])
+  @@index([userId, status])
+  @@map("user_problems")
+}
+
+model ReviewHistory {
+  id            String   @id @default(uuid())
+  userProblemId String   @map("user_problem_id")
+  reviewedAt    DateTime @default(now()) @map("reviewed_at")
+  rating        String   // "easy" | "medium" | "hard"
+  intervalUsed  Int      @map("interval_used")
+  nextInterval  Int      @map("next_interval")
+
+  userProblem UserProblem @relation(fields: [userProblemId], references: [id], onDelete: Cascade)
+
+  @@map("review_history")
+}
