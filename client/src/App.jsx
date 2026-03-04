@@ -6,7 +6,6 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import AuthCallback from './pages/AuthCallback';
 import Dashboard from './pages/Dashboard';
-import Problems from './pages/Problems';
 import ProblemDetail from './pages/ProblemDetail';
 import Stats from './pages/Stats';
 import Settings from './pages/Settings';
@@ -21,7 +20,6 @@ export default function App() {
       <Route element={<ProtectedRoute />}>
         <Route element={<Layout />}>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/problems" element={<Problems />} />
           <Route path="/problems/:id" element={<ProblemDetail />} />
           <Route path="/stats" element={<Stats />} />
           <Route path="/settings" element={<Settings />} />

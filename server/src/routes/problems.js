@@ -24,7 +24,7 @@ router.get('/', async (req, res, next) => {
     const [problems, total] = await Promise.all([
       prisma.problem.findMany({
         where,
-        orderBy: { leetcodeNumber: 'asc' },
+        orderBy: { orderIndex: 'asc' },
         skip,
         take: Number(limit),
       }),
